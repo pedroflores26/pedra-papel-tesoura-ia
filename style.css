@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 40px 20px; /* padding menor nas laterais em mobile */
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%; /* para preencher telas pequenas */
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.botoes-jogo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap; /* permite quebrar linhas em telas menores */
+}
+
+.botoes-jogo button {
+    border: none;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    flex: 1 1 100px; /* permite encolher e crescer, base 100px */
+    max-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botoes-jogo button:hover {
+    transform: scale(1.05);
+}
+
+.botoes-jogo img {
+    width: 80px;
+    height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.botoes-jogo span {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.sair {
+    background-color: #ff4c4c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.sair:hover {
+    background-color: #e03b3b;
+}
+
+#resultado {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.imagem-escolha {
+    height: 80px;
+    margin: 10px;
+    max-width: 80px;
+    width: 100%;
+    object-fit: contain;
+}
+
+#placar {
+    margin-top: 20px;
+    text-align: left;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+#placar p {
+    margin: 5px 0;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* MEDIA QUERIES para telas menores */
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .botoes-jogo {
+        gap: 15px;
+    }
+
+    .botoes-jogo button {
+        max-width: 100px;
+        flex: 1 1 90px;
+        padding: 8px;
+    }
+
+    .botoes-jogo img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .botoes-jogo span {
+        font-size: 0.9rem;
+    }
+
+    .sair {
+        max-width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #resultado {
+        font-size: 16px;
+    }
+
+    #placar {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    #placar p {
+        font-size: 0.9rem;
+    }
+}

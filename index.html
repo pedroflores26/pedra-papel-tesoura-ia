@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedra, Papel ou Tesoura</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pedra, Papel ou Tesoura</h1>
+        <p>Escolha sua jogada:</p>
+
+        <div class="botoes-jogo">
+            <button onclick="jogar(0)">
+                <img src="img/punch_7476921.png" alt="Pedra" />
+                <span>Pedra</span>
+            </button>
+      
+            <button onclick="jogar(1)">
+                    <img src="img/freepik__faça_uma_mao_aberta_em_formato_de_icone_com_5.png" alt="Papel" />
+                    <span>Papel</span>
+                </button>
+                <button onclick="jogar(2)">
+                    <img src="img/gesture.png" alt="Tesoura" />
+                    <span>Tesoura</span>
+                </button>
+        </div>
+
+        <button class="sair" onclick="sair(9)">Sair do jogo</button>
+        <div id="placar">
+            <p>🟩 Vitórias: <span id="vitorias">0</span></p>
+            <p>🟥 Derrotas: <span id="derrotas">0</span></p>
+            <p>🟨 Empates: <span id="empates">0</span></p>
+        </div>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        const opcoes = ["Pedra", "Papel", "Tesoura"];
+        const imagens = [
+            "img/punch_7476921.png", // Pedra
+            "img/freepik__faça_uma_mao_aberta_em_formato_de_icone_com_5.png", // Papel
+            "img/gesture.png"  // Tesoura
+        ];
+
+        let vitorias = 0;
+        let derrotas = 0;
+        let empates = 0;
+
+        function jogar(escolhaJogador) {
+            const escolhaComputador = Math.floor(Math.random() * 3);
+
+            let resultado = "";
+            if (escolhaJogador === escolhaComputador) {
+                resultado = "Empate!";
+                empates++;
+            } else if (
+                (escolhaJogador === 0 && escolhaComputador === 2) ||
+                (escolhaJogador === 1 && escolhaComputador === 0) ||
+                (escolhaJogador === 2 && escolhaComputador === 1)
+            ) {
+                resultado = "Você venceu!";
+                vitorias++;
+            } else {
+                resultado = "Você perdeu!";
+                derrotas++;
+            }
+
+            atualizarPlacar();
+
+            document.getElementById("resultado").innerHTML = `
+    <p>Você escolheu:</p>
+    <img class="imagem-escolha" src="${imagens[escolhaJogador]}" alt="${opcoes[escolhaJogador]}">
+    <p>Computador escolheu:</p>
+    <img class="imagem-escolha" src="${imagens[escolhaComputador]}" alt="${opcoes[escolhaComputador]}">
+    <p><strong>${resultado}</strong></p>
+  `;
+        }
+
+        function sair() {
+            // Zera as variáveis
+            vitorias = 0;
+            derrotas = 0;
+            empates = 0;
+
+            // Atualiza o placar na tela
+            atualizarPlacar();
+
+            // Mostra mensagem
+            document.getElementById("resultado").innerHTML = "<p>Você saiu do jogo. Placar zerado.</p>";
+        }
+
+
+        function atualizarPlacar() {
+            document.getElementById("vitorias").textContent = vitorias;
+            document.getElementById("derrotas").textContent = derrotas;
+            document.getElementById("empates").textContent = empates;
+        }
+
+
+
+        // Atalho via teclado: 0, 1, 2, 9
+        document.addEventListener("keydown", function (event) {
+            const tecla = event.key;
+
+            if (["0", "1", "2"].includes(tecla)) {
+                jogar(Number(tecla));
+            } else if (tecla === "9") {
+                sair();
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
